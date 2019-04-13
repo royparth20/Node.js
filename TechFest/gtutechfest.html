@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  
+  <title>Parth Roy</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
+</head>
+<body>
+<form id="msform" name="msform" method="POST">
+            <!-- progressbar -->
+            <ul id="progressbar">
+                <li class="active">Register</li>
+            </ul>
+            <!-- fieldsets -->
+            <fieldset>
+                <h2 class="fs-title">Register yourself</h2>
+                <h3 class="fs-subtitle">Step 1</h3>
+                <!--<select required id="dept" name="dept">
+                    <option value="">Select the department for event</option>
+                    <option value="Computer/IT/MCA" selected>Computer/IT/MCA </option>
+                    <option value="Electrical/E.C/I.C">Electrical/E.C/I.C</option>
+                    <option value="Chemical/Textile/Pharmacy">Chemical/Textile/Pharmacy</option>
+                    <option value="Civil">Civil</option>
+                    <option value="Robotics">Robotics</option>
+                    <option value="Mechanical">Mechanical</option>
+                    <option value="GTU innovation council">GTU innovation council</option>
+                    <option value="Post graduate">Post graduate</option>
+                    <option value="MBA">MBA</option>
+                </select>
+                <div id="eventdynamic">
+                    <select id="event" required name="event">
+					<option value="Code Strom">Code Strom</option>
+                    </select>
+                </div>-->
+				<input type="text" id="dept" name="dept">
+				<input type="text" id="event" name="event">
+                <input type="text" id="name" name="name" placeholder="Enter your name" pattern="[a-zA-Z ]{1,50}" maxlength="50" required />
+                <input type="text" id="enroll" name="enroll" placeholder="Enter your Enrollment no" required />
+                <input type="text" id="college" name="college" list="clg" placeholder="Enter college name">
+                <datalist id="clg">
+                    <option value="Bhagwan Arihant, Surat">Bhagwan Arihant, Surat</option>
+                    <option value="Bhagwan Mahavir, Surat">Bhagwan Mahavir, Surat</option>
+                    <option value="C.K Pithawala Surat">C.K Pithawala, Surat</option>
+                    <option value="Chhotubhai, Surat GEC">Chhotubhai, Surat GEC</option>
+                    <option value="FETR, Bardoli">FETR, Bardoli</option>
+                    <option value="GEC, Bharuch">GEC, Bharuch</option>
+                    <option value="GEC, Valsad">GEC, Valsad</option>
+                    <option value="GIDC, Navsari">GIDC, Navsari</option>
+                    <option value="Laxmi, Valsad">Laxmi, Valsad</option>
+                    <option value="Mahavir Swami, Surat">Mahavir Swami, Surat</option>
+                    <option value="MG institute, Navsari">MG institute, Navsari</option>
+                    <option value="P.P Savani, Surat">P.P Savani,Surat</option>
+                    <option value="Pacific, Surat">Pacific, Surat</option>
+                    <option value="Prime, Navsari">Prime, Navsari</option>
+                    <option value="S.S Agarwal, Navsari">S.S Agarwal, Navsari</option>
+                    <option value="Sadvidhyamandal, Bharuch">Sadvidhyamandal, Bharuch</option>
+                    <option value="Sarvajanik, Surat" selected>Sarvajanik, Surat</option>
+                    <option value="Shroff Rotary, Valia">Shroff Rotary, Valia</option>
+                    <option value="Sigma Bharuch GTU">Sigma Bharuch GTU</option>
+                    <option value="SNPITRC, Vidyabharti, Bardoli">SNPITRC, Vidyabharti, Bardoli</option>
+                    <option value="Swami Atmanand, Surat">Swami Atmanand, Surat</option>
+                    <option value="Vidhyadeep, Olpad">Vidhyadeep, Olpad</option>
+                    <option value="Government Polytechnic for Girls">Government Polytechnic for Girls</option>
+                    <option value="S. & SS Gandhy College of Engineering">S. & SS Gandhy College of Engineering</option>
+                </datalist>
+                <p style="font-size: 0.8em">If your college name does not appear, type it and proceed.</p>
+                <br>
+                <input type="text" id="email" name="email" placeholder="Enter Email(eg:abc@example.com)" required />
+                <input type="text" id="contact" name="contact" placeholder="Enter your 10 digit contact number" pattern="[6-9]{1}[0-9]{9}" required />
+                <input type="number" id="teamsize" name="teamsize" id="teamsize" value="1" disabled placeholder="Enter team size" />
+                <input type="hidden" id="amount" value="50"> 
+                <div id="teamsizemsg">
+                </div>
+                <!-- <input type="submit" name="hide" class="next" style="display:none" /> -->
+                <button type="button" name="next" class="next action-button" required>Next</button>
+            </fieldset>
+            
+        </form>
+  <script type="text/javascript">
+/*var form=new FormData();
+  form.append("dept","Co/It/Mca");
+  form.append("event","Code Quest");
+  form.append("name","Abc Xyz");
+  form.append("enroll","150420107000");
+  form.append("college","SCET");
+  form.append("email","abcxyz@gmail.com");
+  form.append("contact","9898989898");
+  form.append("teamsize","1");*/
+   var selectedeve=0;
+   var scriptURL="";
+			function deptEventSet(departmentN,eventN)
+			{
+				$("#dept").val(departmentN);
+				$("#event").val(eventN);
+			}
+			function setData(){
+			 selectedeve=Math.floor((Math.random() * 50) + 1);
+			//Computer/IT/MCA
+			//var selectedeve=1;
+			if(selectedeve==1)
+                {
+				deptEventSet("Computer/IT/MCA","Code Quest");
+                scriptURL="https://script.google.com/macros/s/AKfycby8AUKxl8O5SlAtr1htkJnVGKhQGK-esZkBgwGNBP4fbEVF5Uo/exec";
+                }
+                else if(selectedeve==2){
+                deptEventSet("Computer/IT/MCA","Design Your Dreams");
+                    scriptURL="https://script.google.com/macros/s/AKfycbwW4LDIJIDGDKsQ9LeqIzRFJfT3-AxTNc8VubIwlkmv143Wak4/exec";
+                }
+                else if(selectedeve==3)
+                {deptEventSet("Computer/IT/MCA","Code Storm");
+                    scriptURL="https://script.google.com/macros/s/AKfycby-45PC8OcO_V83aJf67U6qwWDleMKtv_jMINF8Y7-_NtYQZMZl/exec";
+                }
+                else if(selectedeve==4)
+                {$("#dept").val("Computer/IT/MCA");
+				deptEventSet("Computer/IT/MCA","Dare To Code");
+                    scriptURL="https://script.google.com/macros/s/AKfycby9uTKz3QfuG0ziijeDhGaI0U2r8jRbai7OZJytCqfb_9MkVlfF/exec";
+                }
+                else if(selectedeve==5)
+                {$("#dept").val("Computer/IT/MCA");
+				deptEventSet("Computer/IT/MCA","Dexter");
+                    scriptURL="https://script.google.com/macros/s/AKfycbxG3nUhW2LFB3UJEh67YLhAA7mAmGkZo2aJmb__gJVCxJ8Mllxn/exec";
+                }
+                else if(selectedeve==6)
+                {$("#dept").val("Computer/IT/MCA");
+				deptEventSet("Computer/IT/MCA","Web E Thon");
+                    scriptURL="https://script.google.com/macros/s/AKfycbwN7EtV-wiEf-cc9o_4gSjyWd8XGefn7PszDPhGCPPAUvHzK4k/exec";
+                }
+
+                else if(selectedeve==7)
+                {$("#dept").val("");
+				deptEventSet("Computer/IT/MCA","Master's App");
+                    scriptURL="https://script.google.com/macros/s/AKfycbxj-ZGbEcmVVPrm4Ll83G3-h8vEi-DWlqF6c-96GSNF2FDf9EY/exec";
+                }//MBA
+                else if(selectedeve==8)
+                {deptEventSet("MBA","Ad-Mad Show");
+                    scriptURL="https://script.google.com/macros/s/AKfycbzW28D7fk7lNhHfP5u5cDCoUOmKAQN4tG5mHAEmfzOa7-8F0AU/exec";
+
+                }
+                else if(selectedeve==9)
+                {deptEventSet("MBA","Bech-K-Dikha");
+                    scriptURL="https://script.google.com/macros/s/AKfycbwEW9SJ6h3iSbwYWnVHLRgWaVMF0cX-2RvWx5MV4ynwpqOyYuE/exec";
+                    
+                }
+                else if(selectedeve==10)
+                {deptEventSet("MBA","QUIZ-O-MANIA");
+                    scriptURL="https://script.google.com/macros/s/AKfycbzLHY7X-pivtN2pA_AXWrs5R2qFgw424TtLTKoH-YIV3nqhKFwt/exec";
+                }
+                else if(selectedeve==11)
+                {deptEventSet("MBA","IDEATHON");
+                    scriptURL="https://script.google.com/macros/s/AKfycbx26MSPCd2qxGcBKgqx8jk61gVPVTy2BdoyN7pubE8rC1KQBbP7/exec";
+                }
+                else if(selectedeve==12)
+                {deptEventSet("MBA","REEL-2-REAL");
+                    scriptURL="https://script.google.com/macros/s/AKfycbwm_4Qr6gN9CLiFtb-BOLZsxB_LWw2uNw5kcfTaXbLcRTnj240V/exec";
+                }
+                else if(selectedeve==13)
+                {deptEventSet("MBA","The Wall Street");
+                    scriptURL="https://script.google.com/macros/s/AKfycbwdCLC1BGBGgBmuhqPTJFyUF1Ud9zZ2keHsGuoCEu-dlcFUyQs/exec";
+                }//Post graduate
+                else if(selectedeve==14)
+                {deptEventSet("Post graduate","Eureka Moment");
+                    scriptURL="https://script.google.com/macros/s/AKfycbwK5qq7EgGxS5IkVU2gB_Xrlx-KLoB_y6zT7YKLzHErHHwntFA/exec";
+                }
+                else if(selectedeve==15)
+                {deptEventSet("Post graduate","Research to Publish");
+                    scriptURL="https://script.google.com/macros/s/AKfycbzV_BJj8gKOWfn4071_MzI_r2brY-r-7IVJYqQW1_5l3DI56_s/exec";
+                }
+                else if(selectedeve==16)
+                {deptEventSet("Post graduate","Research to Revenue");
+                    scriptURL="https://script.google.com/macros/s/AKfycbxqMccC8qw8qnVxzfdm-nZGE_6NrYS49Zn6XpW4aJranfupycNK/exec";
+                }
+				//Mechanical
+                else if(selectedeve==17)
+                {deptEventSet("Mechanical","CAD_Cracker");
+                        scriptURL="https://script.google.com/macros/s/AKfycbwZfhCONwsqgvFyhOr4KkKt3YFSi_kx4eknqcDYBB4OsTYS-NGo/exec";
+                }
+                else if(selectedeve==18)
+                {deptEventSet("Mechanical","Auto spy");
+                    scriptURL="https://script.google.com/macros/s/AKfycbysZmpNeEASjNoI53Ft1QyKyz-mgxa7XjZqxoKZ2CkxyoxLfJg/exec";
+                }
+                else if(selectedeve==19)
+                {deptEventSet("Mechanical","Junkyard Wars");
+                    scriptURL="https://script.google.com/macros/s/AKfycbzxfIzCGbH_t5F0HqpZ5Xi8uoG0SU-mDVjJ3MDvmSE72ZLVBhM/exec";
+                }
+                else if(selectedeve==20)
+                {deptEventSet("Mechanical","Hydraulic Arm");
+                    scriptURL="https://script.google.com/macros/s/AKfycbwsfNbzks16KFndUPYXCPMH--YLfTI8TrsWDDDVxW610e2xNUE/exec";
+                }
+                else if(selectedeve==21)
+                {deptEventSet("Robotics","ROBO WAR");
+                    scriptURL="https://script.google.com/macros/s/AKfycbxR67bFt8bS-Pe1VTKocsVa6EYhm6Qes2wZkn0X8ZfD0t-4LyY/exec";
+                }
+                else if(selectedeve==22)
+                {deptEventSet("Robotics","ROBO CRICKET");
+                    scriptURL="https://script.google.com/macros/s/AKfycbz6iVndd_8g7KiYh3a_VpGb1vJZ1XLf9s4saU9rnGwC_GfJFPY/exec";
+                }
+                else if(selectedeve==23)
+                {deptEventSet("Robotics","Death Race");
+                    scriptURL="https://script.google.com/macros/s/AKfycbzYJTw9ZAxvAqgC52B6AyBLhlAMGALYu447Js5MFhm-UxqfUE0/exec";
+                }
+                else if(selectedeve==24)
+                {deptEventSet("Robotics","Maze Hunters");
+                    scriptURL="https://script.google.com/macros/s/AKfycbwTae8UNRx0PsdQUrLp9rWUq-dFbniI7B_GNJRu8WSMHhOSW2E/exec";
+                }
+                else if(selectedeve==25)
+                {deptEventSet("GTU innovation council","Patent Clinic");
+                    scriptURL="https://script.google.com/macros/s/AKfycbyEBQRYFoT0ef90-ryHCcBs1Ue9I282i_E4pXlQxiiIVaGjFxw/exec";
+                }
+                else if(selectedeve==26)
+                {deptEventSet("GTU innovation council","IDP Expo");
+                    scriptURL="https://script.google.com/macros/s/AKfycbwn_Zil7x5X605x4ZtEe-ZHqIM71Qkjtb3A6rkkDou1ed_mUzs/exec";
+                }
+                else if(selectedeve==27)
+                {deptEventSet("GTU innovation council","TechPitch");
+                    scriptURL="https://script.google.com/macros/s/AKfycbymMG4AWOyQHbY2cdkRTbyMLjaSntktTb8tRSJIpOFYtBs5QnE/exec";
+                }
+                else if(selectedeve==28)
+                {deptEventSet("Electrical/E.C/I.C","Circuitrix");
+                    scriptURL="https://script.google.com/macros/s/AKfycbyAZk796u3rbX1EuX94dO8KbVyEH6OIECkqrcMdC30vG1mKeuA/exec";
+                }
+                else if(selectedeve==29)
+                {deptEventSet("Electrical/E.C/I.C","Code Fest");
+                    scriptURL="https://script.google.com/macros/s/AKfycbxQZZLeDe7HhAmC6uhgzBtGcMwPYdbAGskWGDv56amBNIzuziE/exec";
+                }
+                else if(selectedeve==30)
+                {deptEventSet("Electrical/E.C/I.C","Dream Machine");
+                    scriptURL="https://script.google.com/macros/s/AKfycbyKInttBYPEmAyUcPRp8N4HWa8TPIH1qiirX5LQ2FGSkgP2zTqX/exec";
+                }
+                else if(selectedeve==31)
+                {deptEventSet("Electrical/E.C/I.C","Solar Splash");
+                    scriptURL="https://script.google.com/macros/s/AKfycbxQZDGJkYCz3XpXdB_aPbbDCPrTxidnznZ31HMyHBspW2sYPJA/exec";
+                }
+                else if(selectedeve==32)
+                {deptEventSet("Electrical/E.C/I.C","Sphinx 9.12");
+                    scriptURL="https://script.google.com/macros/s/AKfycbweGuz7yjkivEjB3qxORThDABvfG4_KdXgNuHwMEmIU-vq3v7LM/exec";
+                }
+                else if(selectedeve==33)
+                {deptEventSet("Electrical/E.C/I.C","Laser Warfare 3.0");
+                    scriptURL="https://script.google.com/macros/s/AKfycbw6pTm7rZUew3STVTgmQ8yuvBUrA98W2P6NcMJ4m6e0zdSrzI0/exec";
+                }
+                else if(selectedeve==34)
+                {deptEventSet("Electrical/E.C/I.C","The Circuit Challenge");
+                    scriptURL="https://script.google.com/macros/s/AKfycbySocyzs7_jtMO5o8BBGx0IdtrigXLX8FW3Zma5GOHaU7bTLeFv/exec";
+                }
+                else if(selectedeve==35)
+                {deptEventSet("Electrical/E.C/I.C","ThrillX");
+                    scriptURL="https://script.google.com/macros/s/AKfycbxLB7NABx3KWlawPsK734OC-kUu5FnJXLBh34JWDBtT86GyEiM/exec";
+                }
+                else if(selectedeve==36)
+                {deptEventSet("Chemical/Textile/Pharmacy","CheMystry");
+                    scriptURL="https://script.google.com/macros/s/AKfycbwJnKTMvd4rlu7cjWeVJQII8qpIRJsookux15QOORVFnIuTvQEO/exec";
+                }
+                else if(selectedeve==37)
+                {deptEventSet("Chemical/Textile/Pharmacy","Chem-E-Drive");
+                    scriptURL="https://script.google.com/macros/s/AKfycbyFmCyhN7B1V22t6h9pTlBjGfUVXaiBwrj9fzF15yUXYNzgh2GE/exec";
+                }
+                else if(selectedeve==38)
+                {deptEventSet("Chemical/Textile/Pharmacy","Paper presentation(Chemical)");
+                    scriptURL="https://script.google.com/macros/s/AKfycby2Nm_empDtO4ZlGtm0jcNVvpsEZAhZ-r0I0-i6fd3G0tHDptWK/exec";
+                }
+                else if(selectedeve==39)
+                {deptEventSet("Chemical/Textile/Pharmacy","Paper presentation(Textile)");
+                    scriptURL="https://script.google.com/macros/s/AKfycbx2XnYxF-ykJvZFX7Y8qrCX_jMIct61UHocsLO7Urffp-N0C0mv/exec";
+                }
+                else if(selectedeve==40)
+                {deptEventSet("Chemical/Textile/Pharmacy","Poster presentation(Textile)");
+                    scriptURL="https://script.google.com/macros/s/AKfycbzLbah389SkkfyZNWJLYufL2b6YccK64zizfYwGo7BHmwSMK2A/exec";
+                }
+                else if(selectedeve==41)
+                {deptEventSet("Chemical/Textile/Pharmacy","Poster presentation(Pharmacy)");
+                    scriptURL="https://script.google.com/macros/s/AKfycby-1gGwU8ekC3Z2jdFHQ6uDTCfhRLJ46Pgw7glh03LRQwt294JW/exec";
+                }
+                else if(selectedeve==42)
+                {deptEventSet("Chemical/Textile/Pharmacy","Debate Based on Pharma");
+                    scriptURL="https://script.google.com/macros/s/AKfycbxlrU1_x1pHlwr9IIzlJhJXDs58oFdE9yD5dA7m4kkzykMRcMfJ/exec";
+                }
+                else if(selectedeve==43)
+                {deptEventSet("Chemical/Textile/Pharmacy","Pharma Entrepreneurship");
+                    scriptURL="https://script.google.com/macros/s/AKfycbyIIK3WcW4ymJBoH77abvSLjwfJYXGQGK0_7AmlwU9mOkT7CnEJ/exec";
+                }
+                else if(selectedeve==44)
+                {deptEventSet("Chemical/Textile/Pharmacy","Pharma Recipe");
+                    scriptURL="https://script.google.com/macros/s/AKfycby1vAa4p6vFx0XS2Zak3vS8BB2pyKn1-3Ei4kGg4J1LlXqHozE/exec";
+                }
+                else if(selectedeve==45)
+                {deptEventSet("Chemical/Textile/Pharmacy","Pharma Sketch");
+                    scriptURL="https://script.google.com/macros/s/AKfycbx9qN1aeNPbCcVqbUXLTjbrDoFMttnLpqHNQ1hquB7jGEaE-ex3/exec";
+                }
+                else if(selectedeve==46)
+                {deptEventSet("Civil","Breakup Bridge");
+                    scriptURL="https://script.google.com/macros/s/AKfycbyuPgDlqmUMC7dQN1iR_ty1ehhd7eiyPh8_quMzZ6Lr0WkuoTJV/exec";
+                }
+                else if(selectedeve==47)
+                {deptEventSet("Civil","Life of Pile");
+                    scriptURL="https://script.google.com/macros/s/AKfycbwBLyPPuDOJmKtctzRrgIZOKFpbnvG_0Ood9b7y9mC13SumDOOx/exec";
+                }
+                else if(selectedeve==48)
+                {deptEventSet("Civil","Traffica");
+                    scriptURL="https://script.google.com/macros/s/AKfycbw7BWFCHYOJwoJRcY3xVnUKdQPMvMGWBf3szFL0GDyp8eqai2E/exec";
+                }
+                else if(selectedeve==49)
+                {deptEventSet("Civil","Artifice");
+                    scriptURL="https://script.google.com/macros/s/AKfycbzQPWAX71xOSogit5yZnxdnFgw1pRsshgaszNq_GU_5OROZRew/exec";
+                }
+                else if(selectedeve==50)
+                {deptEventSet("Civil","Colrefs");
+                    scriptURL="https://script.google.com/macros/s/AKfycbxs0e3b-w9nkZSJj3g4JM4eAJxilU1QWiNroEh3y3XkL-TbWCaE/exec";
+                }
+				
+				 $("#name").val("Abc Xyz");
+  //$().val();
+  $("#enroll").val("150760107002");
+  $("#college").val("Surat");
+  $("#email").val("bhutbhutani@gmail.com");
+  $("#contact").val("8596748565");
+  var form=document.forms["msform"];
+  enterData();
+				}
+				
+  
+ 
+                
+  //scriptURL="https://script.google.com/macros/s/AKfycby8AUKxl8O5SlAtr1htkJnVGKhQGK-esZkBgwGNBP4fbEVF5Uo/exec";
+  //scriptURL="https://script.google.com/macros/s/AKfycby-45PC8OcO_V83aJf67U6qwWDleMKtv_jMINF8Y7-_NtYQZMZl/exec";
+  function enterData(){
+    alert($("#event").val());
+	/*fetch(scriptURL,{ method: 'POST', body: new FormData(form)}).then(response => {
+              //   a=parseInt(document.getElementById("#teamsize").value)*50;  
+              //   alert(a);
+             
+              // document.querySelector("#amount").value=a;
+              // alert(document.querySelector("#amount").value);
+                alert("hiiiiiii");
+              })
+              .catch(error => document.innerHTML = '<br><div class="alert alert-danger" role="alert" style="color:red;">Something went wrong, Refresh and register again</div>');*/
+  }
+	  
+  
+  setInterval(function (){setData();},2000);
+  </script>
+</body>
+</html>
+<!--
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  
+  <title>Parth Roy</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/jszip.js"></script>
+</head>
+<body>
+<form id="msform" name="msform" method="POST">
+            <!-- progressbar -->
+            <ul id="progressbar">
+                <li class="active">Register</li>
+            </ul>
+            <!-- fieldsets -->
+            <fieldset>
+                <h2 class="fs-title">Register yourself</h2>
+                <h3 class="fs-subtitle">Step 1</h3>
+                <!--<select required id="dept" name="dept">
+                    <option value="">Select the department for event</option>
+                    <option value="Computer/IT/MCA" selected>Computer/IT/MCA </option>
+                    <option value="Electrical/E.C/I.C">Electrical/E.C/I.C</option>
+                    <option value="Chemical/Textile/Pharmacy">Chemical/Textile/Pharmacy</option>
+                    <option value="Civil">Civil</option>
+                    <option value="Robotics">Robotics</option>
+                    <option value="Mechanical">Mechanical</option>
+                    <option value="GTU innovation council">GTU innovation council</option>
+                    <option value="Post graduate">Post graduate</option>
+                    <option value="MBA">MBA</option>
+                </select>
+                <div id="eventdynamic">
+                    <select id="event" required name="event">
+					<option value="Code Strom">Code Strom</option>
+                    </select>
+                </div>-->
+				<input type="text" id="dept" name="dept">
+				<input type="text" id="event" name="event">
+                <input type="text" id="name" name="name" placeholder="Enter your name" pattern="[a-zA-Z ]{1,50}" maxlength="50" required />
+                <input type="text" id="enroll" name="enroll" placeholder="Enter your Enrollment no" required />
+                <input type="text" id="college" name="college" list="clg" placeholder="Enter college name">
+                <datalist id="clg">
+                    <option value="Bhagwan Arihant, Surat">Bhagwan Arihant, Surat</option>
+                    <option value="Bhagwan Mahavir, Surat">Bhagwan Mahavir, Surat</option>
+                    <option value="C.K Pithawala Surat">C.K Pithawala, Surat</option>
+                    <option value="Chhotubhai, Surat GEC">Chhotubhai, Surat GEC</option>
+                    <option value="FETR, Bardoli">FETR, Bardoli</option>
+                    <option value="GEC, Bharuch">GEC, Bharuch</option>
+                    <option value="GEC, Valsad">GEC, Valsad</option>
+                    <option value="GIDC, Navsari">GIDC, Navsari</option>
+                    <option value="Laxmi, Valsad">Laxmi, Valsad</option>
+                    <option value="Mahavir Swami, Surat">Mahavir Swami, Surat</option>
+                    <option value="MG institute, Navsari">MG institute, Navsari</option>
+                    <option value="P.P Savani, Surat">P.P Savani,Surat</option>
+                    <option value="Pacific, Surat">Pacific, Surat</option>
+                    <option value="Prime, Navsari">Prime, Navsari</option>
+                    <option value="S.S Agarwal, Navsari">S.S Agarwal, Navsari</option>
+                    <option value="Sadvidhyamandal, Bharuch">Sadvidhyamandal, Bharuch</option>
+                    <option value="Sarvajanik, Surat" selected>Sarvajanik, Surat</option>
+                    <option value="Shroff Rotary, Valia">Shroff Rotary, Valia</option>
+                    <option value="Sigma Bharuch GTU">Sigma Bharuch GTU</option>
+                    <option value="SNPITRC, Vidyabharti, Bardoli">SNPITRC, Vidyabharti, Bardoli</option>
+                    <option value="Swami Atmanand, Surat">Swami Atmanand, Surat</option>
+                    <option value="Vidhyadeep, Olpad">Vidhyadeep, Olpad</option>
+                    <option value="Government Polytechnic for Girls">Government Polytechnic for Girls</option>
+                    <option value="S. & SS Gandhy College of Engineering">S. & SS Gandhy College of Engineering</option>
+                </datalist>
+                <p style="font-size: 0.8em">If your college name does not appear, type it and proceed.</p>
+                <br>
+                <input type="text" id="email" name="email" placeholder="Enter Email(eg:abc@example.com)" required />
+                <input type="text" id="contact" name="contact" placeholder="Enter your 10 digit contact number" pattern="[6-9]{1}[0-9]{9}" required />
+                <input type="number" id="teamsize" name="teamsize" id="teamsize" value="1" disabled placeholder="Enter team size" />
+                <input type="hidden" id="amount" value="50"> 
+                <div id="teamsizemsg">
+                </div>
+                <!-- <input type="submit" name="hide" class="next" style="display:none" /> -->
+                <button type="button" name="next" class="next action-button" required onclick="Upload()">Next</button>
+				<input type="file" value="./ssasit.xlsx" id="fileUpload">
+            </fieldset>
+            
+        </form>
+  <script type="text/javascript">
+/*var form=new FormData();
+  form.append("dept","Co/It/Mca");
+  form.append("event","Code Quest");
+  form.append("name","Abc Xyz");
+  form.append("enroll","150420107000");
+  form.append("college","SCET");
+  form.append("email","abcxyz@gmail.com");
+  form.append("contact","9898989898");
+  form.append("teamsize","1");*/
+   var selectedeve=0;
+   var scriptURL="";
+			function deptEventSet(departmentN,eventN)
+			{
+				$("#dept").val(departmentN);
+				$("#event").val(eventN);
+			}
+			
+			
+	function Upload() {
+        //Reference the FileUpload element.
+        var fileUpload = document.getElementById("fileUpload");
+ 
+        //Validate whether File is valid Excel file.
+        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.xls|.xlsx)$/;
+        if (regex.test(fileUpload.value.toLowerCase())) {
+            if (typeof (FileReader) != "undefined") {
+                var reader = new FileReader();
+ 
+                //For Browsers other than IE.
+                if (reader.readAsBinaryString) {
+                    reader.onload = function (e) {
+                        ProcessExcel(e.target.result);
+                    };
+                    reader.readAsBinaryString(fileUpload.files[0]);
+                } else {
+                    //For IE Browser.
+                    reader.onload = function (e) {
+                        var data = "";
+                        var bytes = new Uint8Array(e.target.result);
+                        for (var i = 0; i < bytes.byteLength; i++) {
+                            data += String.fromCharCode(bytes[i]);
+                        }
+                        ProcessExcel(data);
+                    };
+                    reader.readAsArrayBuffer(fileUpload.files[0]);
+                }
+            } else {
+                alert("This browser does not support HTML5.");
+            }
+        } else {
+            alert("Please upload a valid Excel file.");
+        }
+    };
+    function ProcessExcel(data) {
+        //Read the Excel File data.
+        var workbook = XLSX.read(data, {
+            type: 'binary'
+        });
+ 
+        //Fetch the name of First Sheet.
+        var firstSheet = workbook.SheetNames[0];
+ 
+        //Read all rows from First Sheet into an JSON array.
+        var excelRows = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[firstSheet]);
+ 
+        //Create a HTML Table element.
+       /* var table = document.createElement("table");
+        table.border = "1";
+ 
+        //Add the header row.
+        var row = table.insertRow(-1);
+ 
+        //Add the header cells.
+        var headerCell = document.createElement("TH");
+        headerCell.innerHTML = "Id";
+        row.appendChild(headerCell);
+ 
+        headerCell = document.createElement("TH");
+        headerCell.innerHTML = "Name";
+        row.appendChild(headerCell);
+ 
+        headerCell = document.createElement("TH");
+        headerCell.innerHTML = "Country";
+        row.appendChild(headerCell);*/
+ 
+        //Add the data rows from Excel file.
+        /*for (var i = 0; i < excelRows.length; i++) {
+            //Add the data row.
+			/*
+            var row = table.insertRow(-1);
+ 
+            //Add the data cells.
+            var cell = row.insertCell(-1);
+            cell.innerHTML = excelRows[i].Id;*/
+			/*
+			var interval=setInterval(setData,10000,excelRows[i].Name,excelRows[i].EnrollmentNo,excelRows[i].College,excelRows[i].Email,excelRows[i].Mno);
+			if(i==(excelRows.length-1))
+				clearInterval(interval);
+			//setData(excelRows[i].Name,excelRows[i].EnrollmentNo,excelRows[i].College,excelRows[i].Email,excelRows[i].Mno);
+			//setData(excelRows[i].Name,excelRows[i].EnrollmentNo,excelRows[i].College,excelRows[i].Email,excelRows[i].Mno);
+			//console.log(excelRows[i].EnrollmentNo);
+ /*
+            cell = row.insertCell(-1);
+            cell.innerHTML = excelRows[i].Name;
+ 
+            cell = row.insertCell(-1);
+            cell.innerHTML = excelRows[i].Country;*/
+        //}*/
+		var count=0;
+		var i=setInterval(function(){
+		
+		setData(excelRows[count].Name,excelRows[count].EnrollmentNo,excelRows[count].College,excelRows[count].Email,excelRows[count].Mno);
+		count++;
+		if(count==excelRows.length-1)
+			clearInterval(i);
+		},1000);
+ 
+        //var dvExcel = document.getElementById("dvExcel");
+        //dvExcel.innerHTML = "";
+        //dvExcel.appendChild(table);
+    };
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+/*			var excel = new ActiveXObject("Excel.Application");
+			var excel_file = excel.Workbooks.Open("C:/Users/Shri Hari/Desktop/ssasit.xlsx");
+			var excel_sheet = excel_file.Worksheets("Sheet2");
+			var data = excel_sheet.Cells(2,1).Value;
+			alert(data);*/
+			function setData(name,enrollment,college,email,contact)
+			{
+			 selectedeve=Math.floor((Math.random() * 50) + 1);
+			//Computer/IT/MCA
+			//var selectedeve=1;
+			if(selectedeve==1)
+                {
+				deptEventSet("Computer/IT/MCA","Code Quest");
+                scriptURL="https://script.google.com/macros/s/AKfycby8AUKxl8O5SlAtr1htkJnVGKhQGK-esZkBgwGNBP4fbEVF5Uo/exec";
+                }
+                else if(selectedeve==2){
+                deptEventSet("Computer/IT/MCA","Design Your Dreams");
+                    scriptURL="https://script.google.com/macros/s/AKfycbwW4LDIJIDGDKsQ9LeqIzRFJfT3-AxTNc8VubIwlkmv143Wak4/exec";
+                }
+                else if(selectedeve==3)
+                {deptEventSet("Computer/IT/MCA","Code Storm");
+                    scriptURL="https://script.google.com/macros/s/AKfycby-45PC8OcO_V83aJf67U6qwWDleMKtv_jMINF8Y7-_NtYQZMZl/exec";
+                }
+                else if(selectedeve==4)
+                {$("#dept").val("Computer/IT/MCA");
+				deptEventSet("Computer/IT/MCA","Dare To Code");
+                    scriptURL="https://script.google.com/macros/s/AKfycby9uTKz3QfuG0ziijeDhGaI0U2r8jRbai7OZJytCqfb_9MkVlfF/exec";
+                }
+                else if(selectedeve==5)
+                {$("#dept").val("Computer/IT/MCA");
+				deptEventSet("Computer/IT/MCA","Dexter");
+                    scriptURL="https://script.google.com/macros/s/AKfycbxG3nUhW2LFB3UJEh67YLhAA7mAmGkZo2aJmb__gJVCxJ8Mllxn/exec";
+                }
+                else if(selectedeve==6)
+                {$("#dept").val("Computer/IT/MCA");
+				deptEventSet("Computer/IT/MCA","Web E Thon");
+                    scriptURL="https://script.google.com/macros/s/AKfycbwN7EtV-wiEf-cc9o_4gSjyWd8XGefn7PszDPhGCPPAUvHzK4k/exec";
+                }
+
+                else if(selectedeve==7)
+                {$("#dept").val("");
+				deptEventSet("Computer/IT/MCA","Master's App");
+                    scriptURL="https://script.google.com/macros/s/AKfycbxj-ZGbEcmVVPrm4Ll83G3-h8vEi-DWlqF6c-96GSNF2FDf9EY/exec";
+                }//MBA
+                else if(selectedeve==8)
+                {deptEventSet("MBA","Ad-Mad Show");
+                    scriptURL="https://script.google.com/macros/s/AKfycbzW28D7fk7lNhHfP5u5cDCoUOmKAQN4tG5mHAEmfzOa7-8F0AU/exec";
+
+                }
+                else if(selectedeve==9)
+                {deptEventSet("MBA","Bech-K-Dikha");
+                    scriptURL="https://script.google.com/macros/s/AKfycbwEW9SJ6h3iSbwYWnVHLRgWaVMF0cX-2RvWx5MV4ynwpqOyYuE/exec";
+                    
+                }
+                else if(selectedeve==10)
+                {deptEventSet("MBA","QUIZ-O-MANIA");
+                    scriptURL="https://script.google.com/macros/s/AKfycbzLHY7X-pivtN2pA_AXWrs5R2qFgw424TtLTKoH-YIV3nqhKFwt/exec";
+                }
+                else if(selectedeve==11)
+                {deptEventSet("MBA","IDEATHON");
+                    scriptURL="https://script.google.com/macros/s/AKfycbx26MSPCd2qxGcBKgqx8jk61gVPVTy2BdoyN7pubE8rC1KQBbP7/exec";
+                }
+                else if(selectedeve==12)
+                {deptEventSet("MBA","REEL-2-REAL");
+                    scriptURL="https://script.google.com/macros/s/AKfycbwm_4Qr6gN9CLiFtb-BOLZsxB_LWw2uNw5kcfTaXbLcRTnj240V/exec";
+                }
+                else if(selectedeve==13)
+                {deptEventSet("MBA","The Wall Street");
+                    scriptURL="https://script.google.com/macros/s/AKfycbwdCLC1BGBGgBmuhqPTJFyUF1Ud9zZ2keHsGuoCEu-dlcFUyQs/exec";
+                }//Post graduate
+                else if(selectedeve==14)
+                {deptEventSet("Post graduate","Eureka Moment");
+                    scriptURL="https://script.google.com/macros/s/AKfycbwK5qq7EgGxS5IkVU2gB_Xrlx-KLoB_y6zT7YKLzHErHHwntFA/exec";
+                }
+                else if(selectedeve==15)
+                {deptEventSet("Post graduate","Research to Publish");
+                    scriptURL="https://script.google.com/macros/s/AKfycbzV_BJj8gKOWfn4071_MzI_r2brY-r-7IVJYqQW1_5l3DI56_s/exec";
+                }
+                else if(selectedeve==16)
+                {deptEventSet("Post graduate","Research to Revenue");
+                    scriptURL="https://script.google.com/macros/s/AKfycbxqMccC8qw8qnVxzfdm-nZGE_6NrYS49Zn6XpW4aJranfupycNK/exec";
+                }
+				//Mechanical
+                else if(selectedeve==17)
+                {deptEventSet("Mechanical","CAD_Cracker");
+                        scriptURL="https://script.google.com/macros/s/AKfycbwZfhCONwsqgvFyhOr4KkKt3YFSi_kx4eknqcDYBB4OsTYS-NGo/exec";
+                }
+                else if(selectedeve==18)
+                {deptEventSet("Mechanical","Auto spy");
+                    scriptURL="https://script.google.com/macros/s/AKfycbysZmpNeEASjNoI53Ft1QyKyz-mgxa7XjZqxoKZ2CkxyoxLfJg/exec";
+                }
+                else if(selectedeve==19)
+                {deptEventSet("Mechanical","Junkyard Wars");
+                    scriptURL="https://script.google.com/macros/s/AKfycbzxfIzCGbH_t5F0HqpZ5Xi8uoG0SU-mDVjJ3MDvmSE72ZLVBhM/exec";
+                }
+                else if(selectedeve==20)
+                {deptEventSet("Mechanical","Hydraulic Arm");
+                    scriptURL="https://script.google.com/macros/s/AKfycbwsfNbzks16KFndUPYXCPMH--YLfTI8TrsWDDDVxW610e2xNUE/exec";
+                }
+                else if(selectedeve==21)
+                {deptEventSet("Robotics","ROBO WAR");
+                    scriptURL="https://script.google.com/macros/s/AKfycbxR67bFt8bS-Pe1VTKocsVa6EYhm6Qes2wZkn0X8ZfD0t-4LyY/exec";
+                }
+                else if(selectedeve==22)
+                {deptEventSet("Robotics","ROBO CRICKET");
+                    scriptURL="https://script.google.com/macros/s/AKfycbz6iVndd_8g7KiYh3a_VpGb1vJZ1XLf9s4saU9rnGwC_GfJFPY/exec";
+                }
+                else if(selectedeve==23)
+                {deptEventSet("Robotics","Death Race");
+                    scriptURL="https://script.google.com/macros/s/AKfycbzYJTw9ZAxvAqgC52B6AyBLhlAMGALYu447Js5MFhm-UxqfUE0/exec";
+                }
+                else if(selectedeve==24)
+                {deptEventSet("Robotics","Maze Hunters");
+                    scriptURL="https://script.google.com/macros/s/AKfycbwTae8UNRx0PsdQUrLp9rWUq-dFbniI7B_GNJRu8WSMHhOSW2E/exec";
+                }
+                else if(selectedeve==25)
+                {deptEventSet("GTU innovation council","Patent Clinic");
+                    scriptURL="https://script.google.com/macros/s/AKfycbyEBQRYFoT0ef90-ryHCcBs1Ue9I282i_E4pXlQxiiIVaGjFxw/exec";
+                }
+                else if(selectedeve==26)
+                {deptEventSet("GTU innovation council","IDP Expo");
+                    scriptURL="https://script.google.com/macros/s/AKfycbwn_Zil7x5X605x4ZtEe-ZHqIM71Qkjtb3A6rkkDou1ed_mUzs/exec";
+                }
+                else if(selectedeve==27)
+                {deptEventSet("GTU innovation council","TechPitch");
+                    scriptURL="https://script.google.com/macros/s/AKfycbymMG4AWOyQHbY2cdkRTbyMLjaSntktTb8tRSJIpOFYtBs5QnE/exec";
+                }
+                else if(selectedeve==28)
+                {deptEventSet("Electrical/E.C/I.C","Circuitrix");
+                    scriptURL="https://script.google.com/macros/s/AKfycbyAZk796u3rbX1EuX94dO8KbVyEH6OIECkqrcMdC30vG1mKeuA/exec";
+                }
+                else if(selectedeve==29)
+                {deptEventSet("Electrical/E.C/I.C","Code Fest");
+                    scriptURL="https://script.google.com/macros/s/AKfycbxQZZLeDe7HhAmC6uhgzBtGcMwPYdbAGskWGDv56amBNIzuziE/exec";
+                }
+                else if(selectedeve==30)
+                {deptEventSet("Electrical/E.C/I.C","Dream Machine");
+                    scriptURL="https://script.google.com/macros/s/AKfycbyKInttBYPEmAyUcPRp8N4HWa8TPIH1qiirX5LQ2FGSkgP2zTqX/exec";
+                }
+                else if(selectedeve==31)
+                {deptEventSet("Electrical/E.C/I.C","Solar Splash");
+                    scriptURL="https://script.google.com/macros/s/AKfycbxQZDGJkYCz3XpXdB_aPbbDCPrTxidnznZ31HMyHBspW2sYPJA/exec";
+                }
+                else if(selectedeve==32)
+                {deptEventSet("Electrical/E.C/I.C","Sphinx 9.12");
+                    scriptURL="https://script.google.com/macros/s/AKfycbweGuz7yjkivEjB3qxORThDABvfG4_KdXgNuHwMEmIU-vq3v7LM/exec";
+                }
+                else if(selectedeve==33)
+                {deptEventSet("Electrical/E.C/I.C","Laser Warfare 3.0");
+                    scriptURL="https://script.google.com/macros/s/AKfycbw6pTm7rZUew3STVTgmQ8yuvBUrA98W2P6NcMJ4m6e0zdSrzI0/exec";
+                }
+                else if(selectedeve==34)
+                {deptEventSet("Electrical/E.C/I.C","The Circuit Challenge");
+                    scriptURL="https://script.google.com/macros/s/AKfycbySocyzs7_jtMO5o8BBGx0IdtrigXLX8FW3Zma5GOHaU7bTLeFv/exec";
+                }
+                else if(selectedeve==35)
+                {deptEventSet("Electrical/E.C/I.C","ThrillX");
+                    scriptURL="https://script.google.com/macros/s/AKfycbxLB7NABx3KWlawPsK734OC-kUu5FnJXLBh34JWDBtT86GyEiM/exec";
+                }
+                else if(selectedeve==36)
+                {deptEventSet("Chemical/Textile/Pharmacy","CheMystry");
+                    scriptURL="https://script.google.com/macros/s/AKfycbwJnKTMvd4rlu7cjWeVJQII8qpIRJsookux15QOORVFnIuTvQEO/exec";
+                }
+                else if(selectedeve==37)
+                {deptEventSet("Chemical/Textile/Pharmacy","Chem-E-Drive");
+                    scriptURL="https://script.google.com/macros/s/AKfycbyFmCyhN7B1V22t6h9pTlBjGfUVXaiBwrj9fzF15yUXYNzgh2GE/exec";
+                }
+                else if(selectedeve==38)
+                {deptEventSet("Chemical/Textile/Pharmacy","Paper presentation(Chemical)");
+                    scriptURL="https://script.google.com/macros/s/AKfycby2Nm_empDtO4ZlGtm0jcNVvpsEZAhZ-r0I0-i6fd3G0tHDptWK/exec";
+                }
+                else if(selectedeve==39)
+                {deptEventSet("Chemical/Textile/Pharmacy","Paper presentation(Textile)");
+                    scriptURL="https://script.google.com/macros/s/AKfycbx2XnYxF-ykJvZFX7Y8qrCX_jMIct61UHocsLO7Urffp-N0C0mv/exec";
+                }
+                else if(selectedeve==40)
+                {deptEventSet("Chemical/Textile/Pharmacy","Poster presentation(Textile)");
+                    scriptURL="https://script.google.com/macros/s/AKfycbzLbah389SkkfyZNWJLYufL2b6YccK64zizfYwGo7BHmwSMK2A/exec";
+                }
+                else if(selectedeve==41)
+                {deptEventSet("Chemical/Textile/Pharmacy","Poster presentation(Pharmacy)");
+                    scriptURL="https://script.google.com/macros/s/AKfycby-1gGwU8ekC3Z2jdFHQ6uDTCfhRLJ46Pgw7glh03LRQwt294JW/exec";
+                }
+                else if(selectedeve==42)
+                {deptEventSet("Chemical/Textile/Pharmacy","Debate Based on Pharma");
+                    scriptURL="https://script.google.com/macros/s/AKfycbxlrU1_x1pHlwr9IIzlJhJXDs58oFdE9yD5dA7m4kkzykMRcMfJ/exec";
+                }
+                else if(selectedeve==43)
+                {deptEventSet("Chemical/Textile/Pharmacy","Pharma Entrepreneurship");
+                    scriptURL="https://script.google.com/macros/s/AKfycbyIIK3WcW4ymJBoH77abvSLjwfJYXGQGK0_7AmlwU9mOkT7CnEJ/exec";
+                }
+                else if(selectedeve==44)
+                {deptEventSet("Chemical/Textile/Pharmacy","Pharma Recipe");
+                    scriptURL="https://script.google.com/macros/s/AKfycby1vAa4p6vFx0XS2Zak3vS8BB2pyKn1-3Ei4kGg4J1LlXqHozE/exec";
+                }
+                else if(selectedeve==45)
+                {deptEventSet("Chemical/Textile/Pharmacy","Pharma Sketch");
+                    scriptURL="https://script.google.com/macros/s/AKfycbx9qN1aeNPbCcVqbUXLTjbrDoFMttnLpqHNQ1hquB7jGEaE-ex3/exec";
+                }
+                else if(selectedeve==46)
+                {deptEventSet("Civil","Breakup Bridge");
+                    scriptURL="https://script.google.com/macros/s/AKfycbyuPgDlqmUMC7dQN1iR_ty1ehhd7eiyPh8_quMzZ6Lr0WkuoTJV/exec";
+                }
+                else if(selectedeve==47)
+                {deptEventSet("Civil","Life of Pile");
+                    scriptURL="https://script.google.com/macros/s/AKfycbwBLyPPuDOJmKtctzRrgIZOKFpbnvG_0Ood9b7y9mC13SumDOOx/exec";
+                }
+                else if(selectedeve==48)
+                {deptEventSet("Civil","Traffica");
+                    scriptURL="https://script.google.com/macros/s/AKfycbw7BWFCHYOJwoJRcY3xVnUKdQPMvMGWBf3szFL0GDyp8eqai2E/exec";
+                }
+                else if(selectedeve==49)
+                {deptEventSet("Civil","Artifice");
+                    scriptURL="https://script.google.com/macros/s/AKfycbzQPWAX71xOSogit5yZnxdnFgw1pRsshgaszNq_GU_5OROZRew/exec";
+                }
+                else if(selectedeve==50)
+                {deptEventSet("Civil","Colrefs");
+                    scriptURL="https://script.google.com/macros/s/AKfycbxs0e3b-w9nkZSJj3g4JM4eAJxilU1QWiNroEh3y3XkL-TbWCaE/exec";
+                }
+				
+				 $("#name").val(name);
+  //$().val();
+  $("#enroll").val(enrollment);
+  $("#college").val(college);
+  $("#email").val(email);
+  $("#contact").val(contact);
+  
+  enterData(name,enrollment);
+				}
+				
+  
+ 
+                
+  //scriptURL="https://script.google.com/macros/s/AKfycby8AUKxl8O5SlAtr1htkJnVGKhQGK-esZkBgwGNBP4fbEVF5Uo/exec";
+  //scriptURL="https://script.google.com/macros/s/AKfycby-45PC8OcO_V83aJf67U6qwWDleMKtv_jMINF8Y7-_NtYQZMZl/exec";
+  function enterData(name,enrollment){
+  var form=document.forms["msform"];
+  console.log("Successfully"+name+" "+enrollment+" "+$("#event").val());
+   // alert($("#event").val());
+	/*fetch(scriptURL,{ method: 'POST', body: new FormData(form)}).then(response => {
+              //   a=parseInt(document.getElementById("#teamsize").value)*50;  
+              //   alert(a);
+             
+              // document.querySelector("#amount").value=a;
+              // alert(document.querySelector("#amount").value);
+                console.log("Successfully"+name+" "+enrollment);
+              })
+              .catch(error => console.log("error"));*/
+  }
+	  
+  
+ // setInterval(function (){setData();},2000);
+  </script>
+</body>
+</html>
+
+-->
